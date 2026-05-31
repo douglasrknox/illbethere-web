@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SMS Notifications &amp; Opt-In — I'll Be There</title>
+  <meta name="description" content="How text message (SMS) opt-in and consent works for I'll Be There." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧡</text></svg>" />
+  <style>
+    :root {
+      --primary: #f97316;
+      --primary-dark: #ea580c;
+      --primary-light: #fff7ed;
+      --background: #f5f0eb;
+      --white: #ffffff;
+      --card-border: #ede8e3;
+      --text-dark: #1a1a1a;
+      --text-medium: #555555;
+      --text-light: #888888;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      background-color: var(--background);
+      color: var(--text-dark);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+    header {
+      background-color: var(--white);
+      border-bottom: 1px solid var(--card-border);
+    }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .brand {
+      display: flex; align-items: center; gap: 8px;
+      font-weight: 700; font-size: 18px; text-decoration: none; color: var(--text-dark);
+    }
+    .back {
+      text-decoration: none; color: var(--primary); font-weight: 600; font-size: 15px;
+    }
+    .content {
+      background-color: var(--white);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 48px 40px;
+      margin: 40px 0;
+    }
+    .content h1 { font-size: 32px; letter-spacing: -0.01em; margin-bottom: 8px; }
+    .updated { color: var(--text-light); font-size: 14px; margin-bottom: 28px; }
+    .content h2 { font-size: 20px; margin: 32px 0 12px; }
+    .content p { color: var(--text-medium); margin-bottom: 14px; }
+    .content ul { color: var(--text-medium); margin: 0 0 14px 22px; }
+    .content li { margin-bottom: 8px; }
+    .content a { color: var(--primary); }
+
+    /* Mock signup form (depicts the in-app / web opt-in) */
+    .mock {
+      max-width: 380px;
+      margin: 24px auto 8px;
+      background: var(--background);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 28px 24px;
+    }
+    .mock-title { font-size: 20px; font-weight: 700; margin-bottom: 4px; text-align: center; }
+    .mock-sub { font-size: 14px; color: var(--text-light); text-align: center; margin-bottom: 20px; }
+    .mock label { display: block; font-size: 13px; font-weight: 600; color: var(--text-dark); margin-bottom: 6px; }
+    .mock-input {
+      width: 100%; box-sizing: border-box; padding: 13px 14px; font-size: 16px;
+      border: 1px solid var(--card-border); border-radius: 12px; background: var(--white);
+      color: var(--text-medium); margin-bottom: 18px;
+    }
+    .consent {
+      display: flex; gap: 10px; align-items: flex-start;
+      background: var(--white); border: 1px solid var(--card-border);
+      border-radius: 12px; padding: 14px; margin-bottom: 18px;
+    }
+    .consent .box {
+      flex-shrink: 0; width: 20px; height: 20px; border: 2px solid var(--primary);
+      border-radius: 5px; margin-top: 2px;
+    }
+    .consent small { font-size: 12.5px; color: var(--text-medium); line-height: 1.55; }
+    .consent strong { color: var(--text-dark); }
+    .mock-btn {
+      width: 100%; padding: 14px; font-size: 16px; font-weight: 600;
+      background: var(--primary); color: var(--white); border: none; border-radius: 12px;
+      text-align: center;
+    }
+    .caption { text-align: center; font-size: 13px; color: var(--text-light); font-style: italic; margin-bottom: 8px; }
+
+    .callout {
+      background-color: var(--primary-light);
+      border: 1px solid #fed7aa;
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin: 22px 0;
+      color: var(--text-dark);
+    }
+    footer { text-align: center; padding: 30px 0; font-size: 13px; color: var(--text-light); }
+    footer a { color: var(--text-light); }
+    @media (max-width: 600px) {
+      .content { padding: 32px 22px; }
+      .content h1 { font-size: 26px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a href="/" class="brand"><span>🧡</span> I'll Be There</a>
+      <a href="/" class="back">&larr; Back to home</a>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="content">
+      <h1>Text Message Notifications &amp; Opt-In</h1>
+      <p class="updated">Last updated: May 31, 2026</p>
+
+      <p>
+        I'll Be There sends optional text message (SMS) alerts so family never misses a
+        child's game. This page explains exactly how users opt in, what we send, and how
+        to opt out. Messaging is always optional and is never required to use the Service.
+      </p>
+
+      <h2>How users opt in</h2>
+      <p>
+        Users opt in through a consent form when they sign up for I'll Be There. They
+        enter their own mobile number and must actively check a consent box agreeing to
+        receive text messages before any message is sent. Consent is not pre-checked and
+        is not a condition of creating an account or using the Service.
+      </p>
+
+      <p class="caption">The opt-in consent form users complete at signup:</p>
+      <div class="mock" role="img" aria-label="Mock-up of the I'll Be There SMS opt-in consent form">
+        <div class="mock-title">🧡 Stay in the loop</div>
+        <div class="mock-sub">Get game day alerts for your family</div>
+
+        <label>Mobile number</label>
+        <div class="mock-input">(555) 123-4567</div>
+
+        <div class="consent">
+          <div class="box"></div>
+          <small>
+            <strong>Yes, text me game day alerts.</strong> By checking this box, I agree
+            to receive recurring automated text messages from I'll Be There at the number
+            provided (game day reminders, schedule changes, cancellations, and post-game
+            updates). Msg &amp; data rates may apply. Msg frequency varies. Reply STOP to
+            opt out or HELP for help. Consent is not a condition of purchase. See our
+            <a href="/privacy">Privacy Policy</a> and <a href="/terms">Terms</a>.
+          </small>
+        </div>
+
+        <div class="mock-btn">Create my account</div>
+      </div>
+
+      <h2>What we send</h2>
+      <ul>
+        <li>Game day reminders</li>
+        <li>Schedule changes</li>
+        <li>Cancellation alerts</li>
+        <li>Post-game updates</li>
+      </ul>
+      <p>
+        Example message: <em>"I'll Be There: Ava has a soccer game today at 10:00 AM at
+        Riverside Fields. Tap for directions. Reply STOP to opt out."</em>
+      </p>
+
+      <h2>How to opt out or get help</h2>
+      <div class="callout">
+        You can opt out at any time by replying <strong>STOP</strong> to any message, or
+        by turning off notifications in your profile settings. Reply <strong>HELP</strong>
+        for help. Message and data rates may apply. Message frequency varies.
+      </div>
+
+      <h2>Your privacy</h2>
+      <p>
+        We do not sell or share your phone number or messaging information with third
+        parties for their marketing purposes. For full details, see our
+        <a href="/privacy">Privacy Policy</a>. Questions? Contact us at
+        <a href="mailto:douglasrknox@gmail.com">douglasrknox@gmail.com</a>.
+      </p>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 I'll Be There &middot; <a href="/">Home</a> &middot; <a href="/privacy">Privacy Policy</a> &middot; <a href="/terms">Terms of Service</a></p>
+  </footer>
+</body>
+</html>
