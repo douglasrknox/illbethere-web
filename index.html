@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>I'll Be There — Never miss a moment that matters</title>
+  <meta name="description" content="I'll Be There helps grandparents and family find and get to the kids' games in real time. Built grandparent-first, so no one is ever the last to know." />
+
+  <!-- Open Graph / social preview -->
+  <meta property="og:title" content="I'll Be There" />
+  <meta property="og:description" content="Never miss a moment that matters. The family app that helps grandparents and loved ones get to the game — in real time." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://illbethereapp.com" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧡</text></svg>" />
+
+  <style>
+    :root {
+      --primary: #f97316;
+      --primary-dark: #ea580c;
+      --primary-light: #fff7ed;
+      --background: #f5f0eb;
+      --white: #ffffff;
+      --card-border: #ede8e3;
+      --text-dark: #1a1a1a;
+      --text-medium: #555555;
+      --text-light: #888888;
+      --radius: 16px;
+      --max-width: 1080px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      background-color: var(--background);
+      color: var(--text-dark);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+
+    .wrap {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ---------- Header ---------- */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background-color: rgba(245, 240, 235, 0.85);
+      backdrop-filter: saturate(180%) blur(12px);
+      border-bottom: 1px solid var(--card-border);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 18px;
+      text-decoration: none;
+      color: var(--text-dark);
+    }
+    .brand .mark { font-size: 22px; }
+    .nav-cta {
+      background-color: var(--primary);
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      transition: background-color 0.15s ease;
+    }
+    .nav-cta:hover { background-color: var(--primary-dark); }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      text-align: center;
+      padding: 72px 0 56px;
+    }
+    .eyebrow {
+      display: inline-block;
+      background-color: var(--primary-light);
+      color: var(--primary-dark);
+      font-weight: 600;
+      font-size: 14px;
+      padding: 7px 16px;
+      border-radius: 999px;
+      margin-bottom: 24px;
+      border: 1px solid #fed7aa;
+    }
+    .hero h1 {
+      font-size: clamp(34px, 6vw, 60px);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      font-weight: 800;
+      margin-bottom: 20px;
+      max-width: 16ch;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero h1 .accent { color: var(--primary); }
+    .hero .lede {
+      font-size: clamp(17px, 2.4vw, 21px);
+      color: var(--text-medium);
+      max-width: 52ch;
+      margin: 0 auto 36px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 17px;
+      padding: 16px 30px;
+      border-radius: var(--radius);
+      transition: transform 0.1s ease, background-color 0.15s ease;
+      cursor: pointer;
+    }
+    .btn:active { transform: translateY(1px); }
+    .btn-primary {
+      background-color: var(--primary);
+      color: var(--white);
+      box-shadow: 0 8px 24px rgba(249, 115, 22, 0.25);
+    }
+    .btn-primary:hover { background-color: var(--primary-dark); }
+    .btn-secondary {
+      background-color: var(--white);
+      color: var(--primary);
+      border: 1px solid var(--primary);
+    }
+    .btn-secondary:hover { background-color: var(--primary-light); }
+    .hero-note {
+      margin-top: 18px;
+      font-size: 14px;
+      color: var(--text-light);
+    }
+
+    /* ---------- Story / Problem ---------- */
+    .story {
+      background-color: var(--white);
+      border-top: 1px solid var(--card-border);
+      border-bottom: 1px solid var(--card-border);
+      padding: 72px 0;
+    }
+    .story-inner {
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .section-label {
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 14px;
+    }
+    .story h2 {
+      font-size: clamp(26px, 4vw, 38px);
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      margin-bottom: 22px;
+    }
+    .story p {
+      font-size: 18px;
+      color: var(--text-medium);
+      margin-bottom: 18px;
+    }
+    .story p strong { color: var(--text-dark); }
+
+    /* ---------- Features ---------- */
+    .features { padding: 80px 0; }
+    .features-head {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 48px;
+    }
+    .features-head h2 {
+      font-size: clamp(26px, 4vw, 38px);
+      letter-spacing: -0.01em;
+      margin-bottom: 14px;
+    }
+    .features-head p {
+      font-size: 18px;
+      color: var(--text-medium);
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .feature-card {
+      background-color: var(--white);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 30px 26px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .feature-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.06);
+    }
+    .feature-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+      font-size: 26px;
+      background-color: var(--primary-light);
+      border-radius: 14px;
+      margin-bottom: 18px;
+    }
+    .feature-card h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    .feature-card p {
+      font-size: 16px;
+      color: var(--text-medium);
+    }
+
+    /* ---------- CTA ---------- */
+    .cta {
+      padding: 20px 0 90px;
+    }
+    .cta-inner {
+      background: linear-gradient(135deg, #f97316 0%, #fb923c 100%);
+      border-radius: 28px;
+      padding: 64px 32px;
+      text-align: center;
+      color: var(--white);
+      box-shadow: 0 20px 50px rgba(249, 115, 22, 0.3);
+    }
+    .cta-inner h2 {
+      font-size: clamp(28px, 4.5vw, 42px);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+      max-width: 18ch;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-inner p {
+      font-size: 19px;
+      opacity: 0.95;
+      max-width: 46ch;
+      margin: 0 auto 32px;
+    }
+    .cta .btn-light {
+      background-color: var(--white);
+      color: var(--primary-dark);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+    .cta .btn-light:hover { background-color: var(--primary-light); }
+    .cta-sub {
+      margin-top: 18px;
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    /* ---------- Footer ---------- */
+    footer {
+      background-color: var(--white);
+      border-top: 1px solid var(--card-border);
+      padding: 48px 0;
+    }
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 17px;
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+      font-size: 15px;
+    }
+    .footer-links a {
+      color: var(--text-medium);
+      text-decoration: none;
+    }
+    .footer-links a:hover { color: var(--primary); }
+    .footer-legal {
+      margin-top: 28px;
+      font-size: 13px;
+      color: var(--text-light);
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      .hero { padding: 52px 0 40px; }
+      .story, .features { padding: 56px 0; }
+      .cta-inner { padding: 48px 24px; }
+      .footer-inner { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="wrap nav">
+      <a href="#" class="brand"><span class="mark">🧡</span> I'll Be There</a>
+      <a href="#waitlist" class="nav-cta">Join the waitlist</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap">
+        <span class="eyebrow">🧡 Built for the people who show up</span>
+        <h1>Never miss a moment that <span class="accent">matters</span>.</h1>
+        <p class="lede">
+          I'll Be There helps grandparents and family find the kids' games and get
+          there in real time — so the people who love them most are always in the stands.
+        </p>
+        <div class="hero-actions">
+          <a href="#waitlist" class="btn btn-primary">Join the waitlist</a>
+          <a href="#how" class="btn btn-secondary">See how it works</a>
+        </div>
+        <p class="hero-note">Coming soon &middot; Free to start</p>
+      </div>
+    </section>
+
+    <!-- STORY -->
+    <section class="story" id="how">
+      <div class="wrap story-inner">
+        <p class="section-label">Why we built this</p>
+        <h2>Grandma drove two hours. The field had changed. She missed the whole game.</h2>
+        <p>
+          It happens in every family. The schedule shifts, a game moves across town,
+          a tournament gets added at the last minute — and the people who would give
+          <strong>anything</strong> to be there are always the last to find out.
+        </p>
+        <p>
+          Every other app is built for team managers and busy parents. <strong>Nobody
+          built one for the grandparent.</strong> So we did. I'll Be There puts the games,
+          the times, and the directions right in the hands of everyone who loves a kid
+          and wants to be present.
+        </p>
+        <p>
+          Because being there is the whole point.
+        </p>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features">
+      <div class="wrap">
+        <div class="features-head">
+          <h2>Everything a family needs to show up</h2>
+          <p>Simple enough for anyone. Powerful enough to never miss a thing.</p>
+        </div>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="feature-icon">📍</div>
+            <h3>Near Me Now</h3>
+            <p>
+              See which games are happening close to you right now, sorted by distance,
+              with one-tap directions. Perfect for when you're in town for the weekend.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>Real-time game finder</h3>
+            <p>
+              When a game moves, gets cancelled, or a tournament is added, you see it
+              instantly. No more showing up to an empty field.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🧡</div>
+            <h3>Grandparent-first</h3>
+            <p>
+              Big, clear buttons. Plain words. Voice-friendly. Designed from the ground
+              up for the people who matter most — not just tech-savvy parents.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">👨‍👩‍👧‍👦</div>
+            <h3>The whole family, together</h3>
+            <p>
+              Parents share the schedule once, and the whole circle of family stays in
+              the loop automatically. Everyone gets to be there.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA / WAITLIST -->
+    <section class="cta" id="waitlist">
+      <div class="wrap">
+        <div class="cta-inner">
+          <p class="section-label" style="color: rgba(255,255,255,0.9);">Coming soon</p>
+          <h2>Be there for the next big moment.</h2>
+          <p>
+            We're putting the finishing touches on I'll Be There. Join the waitlist
+            and we'll let you know the moment it's ready for your family.
+          </p>
+          <a
+            class="btn btn-light"
+            href="mailto:douglasrknox@gmail.com?subject=Add%20me%20to%20the%20I'll%20Be%20There%20waitlist&body=Hi!%20Please%20add%20me%20to%20the%20waitlist%20for%20I'll%20Be%20There.%20My%20name%20is%3A"
+          >Email us to join the waitlist</a>
+          <p class="cta-sub">Or write to us directly at douglasrknox@gmail.com</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap">
+      <div class="footer-inner">
+        <div class="footer-brand"><span>🧡</span> I'll Be There</div>
+        <nav class="footer-links">
+          <a href="#how">How it works</a>
+          <a href="#waitlist">Waitlist</a>
+          <a href="mailto:douglasrknox@gmail.com">Contact</a>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+        </nav>
+      </div>
+      <p class="footer-legal">
+        &copy; 2026 I'll Be There. Made with 🧡 for families who show up.
+        &middot; <a href="mailto:douglasrknox@gmail.com" style="color: var(--text-light);">douglasrknox@gmail.com</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>
