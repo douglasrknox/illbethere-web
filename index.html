@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>I'll Be There — Never miss a moment that matters</title>
-  <meta name="description" content="I'll Be There brings every child's games into one shared family calendar, so grandparents and extended family always know what's happening, who's going, and how the game ended. Built grandparent-first." />
+  <title data-i18n="meta.title">I'll Be There — Never miss a moment that matters</title>
+  <meta name="description" data-i18n-attr="content:meta.description" content="I'll Be There brings every child's games into one shared family calendar, so grandparents and extended family always know what's happening, who's going, and how the game ended. Built grandparent-first." />
 
   <!-- Open Graph / social preview -->
   <meta property="og:title" content="I'll Be There" />
@@ -87,6 +87,27 @@
       transition: background-color 0.15s ease;
     }
     .nav-cta:hover { background-color: var(--primary-dark); }
+    .nav-right { display: flex; align-items: center; gap: 12px; }
+    .lang-select {
+      appearance: none;
+      -webkit-appearance: none;
+      background-color: var(--white);
+      border: 1px solid var(--card-border);
+      border-radius: 999px;
+      color: var(--text-dark);
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 8px 30px 8px 32px;
+      cursor: pointer;
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23555' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f97316' stroke-width='2'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='2' y1='12' x2='22' y2='12'/%3E%3Cpath d='M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat, no-repeat;
+      background-position: right 10px center, left 10px center;
+      background-size: 14px, 16px;
+    }
+    .lang-select:hover { border-color: var(--primary); }
 
     /* ---------- Hero ---------- */
     .hero {
@@ -331,7 +352,13 @@
   <header>
     <div class="wrap nav">
       <a href="#" class="brand"><span class="mark">🧡</span> I'll Be There</a>
-      <a href="#waitlist" class="nav-cta">Join the waitlist</a>
+      <div class="nav-right">
+        <a href="#waitlist" class="nav-cta" data-i18n="nav.cta">Join the waitlist</a>
+        <select class="lang-select" aria-label="Select language">
+          <option value="en">English</option>
+          <option value="es">Español</option>
+        </select>
+      </div>
     </div>
   </header>
 
@@ -339,40 +366,40 @@
     <!-- HERO -->
     <section class="hero">
       <div class="wrap">
-        <span class="eyebrow">🧡 The family connection app</span>
-        <h1>Stay close to every kid you <span class="accent">love</span>.</h1>
-        <p class="lede">
+        <span class="eyebrow" data-i18n="hero.eyebrow">🧡 The family connection app</span>
+        <h1 data-i18n="hero.title">Stay close to every kid you <span class="accent">love</span>.</h1>
+        <p class="lede" data-i18n="hero.lede">
           I'll Be There brings every child's games into one shared family calendar — so
           grandparents, aunts, uncles, and cousins always know what's happening, who's
           going, and how the game ended. Be there in person, or be there from a thousand
           miles away.
         </p>
         <div class="hero-actions">
-          <a href="#waitlist" class="btn btn-primary">Join the waitlist</a>
-          <a href="#how" class="btn btn-secondary">See how it works</a>
+          <a href="#waitlist" class="btn btn-primary" data-i18n="hero.btnPrimary">Join the waitlist</a>
+          <a href="#how" class="btn btn-secondary" data-i18n="hero.btnSecondary">See how it works</a>
         </div>
-        <p class="hero-note">Coming soon &middot; Free to start</p>
+        <p class="hero-note" data-i18n="hero.note">Coming soon &middot; Free to start</p>
       </div>
     </section>
 
     <!-- STORY -->
     <section class="story" id="how">
       <div class="wrap story-inner">
-        <p class="section-label">Why we built this</p>
-        <h2>Grandma has no idea what's going on this week. And she desperately wants to.</h2>
-        <p>
+        <p class="section-label" data-i18n="story.label">Why we built this</p>
+        <h2 data-i18n="story.h2">Grandma has no idea what's going on this week. And she desperately wants to.</h2>
+        <p data-i18n="story.p1">
           Across an extended family, the games and milestones live in a dozen places —
           a team app here, a group text there, a calendar nobody outside the household
           can see. So the people who love a child most are left guessing, or simply
           <strong>left out</strong>.
         </p>
-        <p>
+        <p data-i18n="story.p2">
           Every other app is built for the team manager. <strong>Nobody built one for
           the grandparent</strong> — or the aunt across the country, or the cousins who'd
           love to swing by. I'll Be There gathers every kid's games into one place and
           puts them in the hands of the whole family.
         </p>
-        <p>
+        <p data-i18n="story.p3">
           So when your granddaughter scores her first goal, you're either in the stands
           &mdash; or you're the first call she gets. That connection doesn't exist
           anywhere else today.
@@ -384,14 +411,14 @@
     <section class="features">
       <div class="wrap">
         <div class="features-head">
-          <h2>One family. One calendar. Every moment.</h2>
-          <p>Built to keep the whole extended family connected — simple enough for anyone.</p>
+          <h2 data-i18n="features.h2">One family. One calendar. Every moment.</h2>
+          <p data-i18n="features.sub">Built to keep the whole extended family connected — simple enough for anyone.</p>
         </div>
         <div class="feature-grid">
           <div class="feature-card">
             <div class="feature-icon">📅</div>
-            <h3>Every kid, one calendar</h3>
-            <p>
+            <h3 data-i18n="f1.title">Every kid, one calendar</h3>
+            <p data-i18n="f1.body">
               All the games across your whole extended family in a single place. Catch
               your daughter's 10am and your nephew's noon game the same day. Games only —
               no practice clutter — plus family events like picnics and reunions.
@@ -399,8 +426,8 @@
           </div>
           <div class="feature-card">
             <div class="feature-icon">☀️</div>
-            <h3>Your morning game plan</h3>
-            <p>
+            <h3 data-i18n="f2.title">Your morning game plan</h3>
+            <p data-i18n="f2.body">
               Each morning, see every game happening that day across all the kids you
               love. Each one shows exactly how far away it is, and a single tap opens the
               map with turn-by-turn directions — so you can decide what to make it to and
@@ -409,16 +436,16 @@
           </div>
           <div class="feature-card">
             <div class="feature-icon">🙋</div>
-            <h3>Say "I'll Be There"</h3>
-            <p>
+            <h3 data-i18n="f3.title">Say "I'll Be There"</h3>
+            <p data-i18n="f3.body">
               Tap to tell the family you're coming. Parents know to expect you, and when
               several of you are going, it's easy to plan lunch together after the game.
             </p>
           </div>
           <div class="feature-card">
             <div class="feature-icon">👪</div>
-            <h3>Every family, however it's shaped</h3>
-            <p>
+            <h3 data-i18n="f4.title">Every family, however it's shaped</h3>
+            <p data-i18n="f4.body">
               Two parents, co-parents raising kids across two homes, blended families,
               grandparents, guardians, nannies, and caregivers — anyone who helps raise a
               child can take part and pitch in. Each person gets a role, and only ever
@@ -427,8 +454,8 @@
           </div>
           <div class="feature-card">
             <div class="feature-icon">🔒</div>
-            <h3>You decide who sees what</h3>
-            <p>
+            <h3 data-i18n="f5.title">You decide who sees what</h3>
+            <p data-i18n="f5.body">
               Parents are always in control — down to each person. You choose who gets
               updates about each child: Grandma, yes. Your sister, no. Your aunt, yes.
               Nobody is added by default, and no one ever sees more than you decide. No
@@ -438,8 +465,8 @@
           </div>
           <div class="feature-card">
             <div class="feature-icon">🧡</div>
-            <h3>Close, even from far away</h3>
-            <p>
+            <h3 data-i18n="f6.title">Close, even from far away</h3>
+            <p data-i18n="f6.body">
               Can't make it from a thousand miles out? Get the result the moment the game
               ends — so you can call to celebrate the win, or lift them up after a loss.
               A family touchpoint that didn't exist before.
@@ -453,17 +480,18 @@
     <section class="cta" id="waitlist">
       <div class="wrap">
         <div class="cta-inner">
-          <p class="section-label" style="color: rgba(255,255,255,0.9);">Coming soon</p>
-          <h2>Be there for the next big moment.</h2>
-          <p>
+          <p class="section-label" style="color: rgba(255,255,255,0.9);" data-i18n="cta.label">Coming soon</p>
+          <h2 data-i18n="cta.h2">Be there for the next big moment.</h2>
+          <p data-i18n="cta.p">
             We're putting the finishing touches on I'll Be There. Join the waitlist
             and we'll let you know the moment it's ready for your family.
           </p>
           <a
             class="btn btn-light"
+            data-i18n="cta.btn"
             href="mailto:douglasrknox@gmail.com?subject=Add%20me%20to%20the%20I'll%20Be%20There%20waitlist&body=Hi!%20Please%20add%20me%20to%20the%20waitlist%20for%20I'll%20Be%20There.%20My%20name%20is%3A"
           >Email us to join the waitlist</a>
-          <p class="cta-sub">Or write to us directly at douglasrknox@gmail.com</p>
+          <p class="cta-sub" data-i18n="cta.sub">Or write to us directly at douglasrknox@gmail.com</p>
         </div>
       </div>
     </section>
@@ -475,20 +503,21 @@
       <div class="footer-inner">
         <div class="footer-brand"><span>🧡</span> I'll Be There</div>
         <nav class="footer-links">
-          <a href="#how">How it works</a>
-          <a href="#waitlist">Waitlist</a>
-          <a href="mailto:douglasrknox@gmail.com">Contact</a>
-          <a href="/sms-opt-in">SMS Notifications</a>
-          <a href="/privacy">Privacy Policy</a>
-          <a href="/terms">Terms of Service</a>
+          <a href="#how" data-i18n="footer.how">How it works</a>
+          <a href="#waitlist" data-i18n="footer.waitlist">Waitlist</a>
+          <a href="mailto:douglasrknox@gmail.com" data-i18n="footer.contact">Contact</a>
+          <a href="/sms-opt-in" data-i18n="footer.sms">SMS Notifications</a>
+          <a href="/privacy" data-i18n="footer.privacy">Privacy Policy</a>
+          <a href="/terms" data-i18n="footer.terms">Terms of Service</a>
         </nav>
       </div>
-      <p class="footer-legal">
+      <p class="footer-legal" data-i18n="footer.legal">
         &copy; 2026 I'll Be There, a service of Knox Adaptive Solutions LLC. Made with 🧡 for families who show up.
         &middot; <a href="mailto:douglasrknox@gmail.com" style="color: var(--text-light);">douglasrknox@gmail.com</a>
       </p>
     </div>
   </footer>
 
+  <script src="/i18n.js" defer></script>
 </body>
 </html>

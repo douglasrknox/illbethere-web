@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SMS Notifications &amp; Opt-In — I'll Be There</title>
-  <meta name="description" content="How text message (SMS) opt-in and consent works for I'll Be There." />
+  <title data-i18n="sms.metaTitle">SMS Notifications &amp; Opt-In — I'll Be There</title>
+  <meta name="description" data-i18n-attr="content:sms.metaDesc" content="How text message (SMS) opt-in and consent works for I'll Be There." />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧡</text></svg>" />
   <style>
     :root {
@@ -42,6 +42,20 @@
     .back {
       text-decoration: none; color: var(--primary); font-weight: 600; font-size: 15px;
     }
+    .nav-right { display: flex; align-items: center; gap: 14px; }
+    .lang-select {
+      appearance: none; -webkit-appearance: none;
+      background-color: var(--white); border: 1px solid var(--card-border);
+      border-radius: 999px; color: var(--text-dark); font-family: inherit;
+      font-size: 14px; font-weight: 600; padding: 8px 30px 8px 32px; cursor: pointer;
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23555' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f97316' stroke-width='2'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='2' y1='12' x2='22' y2='12'/%3E%3Cpath d='M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat, no-repeat;
+      background-position: right 10px center, left 10px center;
+      background-size: 14px, 16px;
+    }
+    .lang-select:hover { border-color: var(--primary); }
     .content {
       background-color: var(--white);
       border: 1px solid var(--card-border);
@@ -112,40 +126,46 @@
   <header>
     <div class="wrap nav">
       <a href="/" class="brand"><span>🧡</span> I'll Be There</a>
-      <a href="/" class="back">&larr; Back to home</a>
+      <div class="nav-right">
+        <a href="/" class="back" data-i18n="sms.back">&larr; Back to home</a>
+        <select class="lang-select" aria-label="Select language">
+          <option value="en">English</option>
+          <option value="es">Español</option>
+        </select>
+      </div>
     </div>
   </header>
 
   <div class="wrap">
     <div class="content">
-      <h1>Text Message Notifications &amp; Opt-In</h1>
-      <p class="updated">Last updated: May 31, 2026</p>
+      <h1 data-i18n="sms.h1">Text Message Notifications &amp; Opt-In</h1>
+      <p class="updated" data-i18n="sms.updated">Last updated: May 31, 2026</p>
 
-      <p>
+      <p data-i18n="sms.intro">
         I'll Be There sends optional text message (SMS) alerts so family never misses a
         child's game. This page explains exactly how users opt in, what we send, and how
         to opt out. Messaging is always optional and is never required to use the Service.
       </p>
 
-      <h2>How users opt in</h2>
-      <p>
+      <h2 data-i18n="sms.howIn.h">How users opt in</h2>
+      <p data-i18n="sms.howIn.p">
         Users opt in through a consent form when they sign up for I'll Be There. They
         enter their own mobile number and must actively check a consent box agreeing to
         receive text messages before any message is sent. Consent is not pre-checked and
         is not a condition of creating an account or using the Service.
       </p>
 
-      <p class="caption">The opt-in consent form users complete at signup:</p>
+      <p class="caption" data-i18n="sms.caption">The opt-in consent form users complete at signup:</p>
       <div class="mock" role="img" aria-label="Mock-up of the I'll Be There SMS opt-in consent form">
-        <div class="mock-title">🧡 Stay in the loop</div>
-        <div class="mock-sub">Get game day alerts for your family</div>
+        <div class="mock-title" data-i18n="sms.mock.title">🧡 Stay in the loop</div>
+        <div class="mock-sub" data-i18n="sms.mock.sub">Get game day alerts for your family</div>
 
-        <label>Mobile number</label>
+        <label data-i18n="sms.mock.label">Mobile number</label>
         <div class="mock-input">(555) 123-4567</div>
 
         <div class="consent">
           <div class="box"></div>
-          <small>
+          <small data-i18n="sms.mock.consent">
             <strong>Yes, text me game day alerts.</strong> By checking this box, I agree
             to receive recurring automated text messages from I'll Be There at the number
             provided (game day reminders, schedule changes, cancellations, and post-game
@@ -155,30 +175,30 @@
           </small>
         </div>
 
-        <div class="mock-btn">Create my account</div>
+        <div class="mock-btn" data-i18n="sms.mock.btn">Create my account</div>
       </div>
 
-      <h2>What we send</h2>
+      <h2 data-i18n="sms.send.h">What we send</h2>
       <ul>
-        <li>Game day reminders</li>
-        <li>Schedule changes</li>
-        <li>Cancellation alerts</li>
-        <li>Post-game updates</li>
+        <li data-i18n="sms.send.li1">Game day reminders</li>
+        <li data-i18n="sms.send.li2">Schedule changes</li>
+        <li data-i18n="sms.send.li3">Cancellation alerts</li>
+        <li data-i18n="sms.send.li4">Post-game updates</li>
       </ul>
-      <p>
+      <p data-i18n="sms.example">
         Example message: <em>"I'll Be There: Lily has a soccer game today at 10:00 AM at
         Riverside Fields. Tap for directions. Reply STOP to opt out."</em>
       </p>
 
-      <h2>How to opt out or get help</h2>
-      <div class="callout">
+      <h2 data-i18n="sms.out.h">How to opt out or get help</h2>
+      <div class="callout" data-i18n="sms.out.callout">
         You can opt out at any time by replying <strong>STOP</strong> to any message, or
         by turning off notifications in your profile settings. Reply <strong>HELP</strong>
         for help. Message and data rates may apply. Message frequency varies.
       </div>
 
-      <h2>Your privacy</h2>
-      <p>
+      <h2 data-i18n="sms.privacy.h">Your privacy</h2>
+      <p data-i18n="sms.privacy.p">
         We do not sell or share your phone number or messaging information with third
         parties for their marketing purposes. For full details, see our
         <a href="/privacy">Privacy Policy</a>. Questions? Contact us at
@@ -188,7 +208,9 @@
   </div>
 
   <footer>
-    <p>&copy; 2026 I'll Be There, a service of Knox Adaptive Solutions LLC &middot; <a href="/">Home</a> &middot; <a href="/privacy">Privacy Policy</a> &middot; <a href="/terms">Terms of Service</a></p>
+    <p data-i18n="sms.footer">&copy; 2026 I'll Be There, a service of Knox Adaptive Solutions LLC &middot; <a href="/">Home</a> &middot; <a href="/privacy">Privacy Policy</a> &middot; <a href="/terms">Terms of Service</a></p>
   </footer>
+
+  <script src="/i18n.js" defer></script>
 </body>
 </html>
