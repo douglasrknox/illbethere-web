@@ -5,7 +5,7 @@
  *  - English is the source of truth, written directly in the HTML.
  *  - Each translatable element carries a data-i18n="some.key" attribute.
  *  - On load we cache the original English (keyed by data-i18n) from the DOM.
- *  - Other languages live in one file each: /i18n/<lang>.json  (e.g. es.json).
+ *  - Other languages live in one file each: /locales/<lang>.json  (e.g. es.json).
  *    Adding a new language = drop in one JSON file and add it to LANGS below.
  *  - The language choice is remembered (localStorage) and the visitor's browser
  *    language is auto-detected on first visit.
@@ -52,7 +52,7 @@
   function loadDict(lang) {
     if (lang === "en") return Promise.resolve({});
     if (dicts[lang]) return Promise.resolve(dicts[lang]);
-    return fetch("/i18n/" + lang + ".json", { cache: "no-cache" })
+    return fetch("/locales/" + lang + ".json", { cache: "no-cache" })
       .then(function (r) {
         if (!r.ok) throw new Error("missing dictionary: " + lang);
         return r.json();
