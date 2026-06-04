@@ -108,6 +108,67 @@
     }
 
     document.documentElement.setAttribute("lang", lang);
+
+    highlightBrand();
+  }
+
+  // ---- Brand name emphasis -------------------------------------------------
+  // Make the product name "I'll Be There" stand out wherever it appears in body
+  // copy (bold + slightly larger). Runs after each translation pass, so it works
+  // for English, Spanish, and any future language automatically — no need to mark
+  // up the source strings. Skips headings, the nav/footer logo, links, the
+  // verbatim SMS example (inside <em>), and copyright lines (inside <footer>).
+  var BRAND_NAME = "I'll Be There";
+
+  function injectBrandCSS() {
+    if (document.getElementById("ibt-brand-style")) return;
+    var s = document.createElement("style");
+    s.id = "ibt-brand-style";
+    s.textContent = ".ibt{font-weight:700;font-size:1.04em;white-space:nowrap;}";
+    document.head.appendChild(s);
+  }
+
+  function wrapBrandInElement(el) {
+    var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (node) {
+        if (!node.nodeValue || node.nodeValue.indexOf(BRAND_NAME) === -1) {
+          return NodeFilter.FILTER_REJECT;
+        }
+        var p = node.parentNode;
+        while (p && p !== el) {
+          var t = p.nodeName;
+          if (t === "A" || t === "EM" || t === "STRONG") {
+            return NodeFilter.FILTER_REJECT;
+          }
+          p = p.parentNode;
+        }
+        return NodeFilter.FILTER_ACCEPT;
+      },
+    });
+    var targets = [];
+    while (walker.nextNode()) targets.push(walker.currentNode);
+    for (var i = 0; i < targets.length; i++) {
+      var node = targets[i];
+      var parts = node.nodeValue.split(BRAND_NAME);
+      var frag = document.createDocumentFragment();
+      for (var j = 0; j < parts.length; j++) {
+        if (parts[j]) frag.appendChild(document.createTextNode(parts[j]));
+        if (j < parts.length - 1) {
+          var strong = document.createElement("strong");
+          strong.className = "ibt";
+          strong.textContent = BRAND_NAME;
+          frag.appendChild(strong);
+        }
+      }
+      node.parentNode.replaceChild(frag, node);
+    }
+  }
+
+  function highlightBrand() {
+    var els = document.querySelectorAll(
+      ".lede, .hero p, .story p, .cta-inner p, .feature-card p, .content p, .content li, .consent small"
+    );
+    for (var i = 0; i < els.length; i++) wrapBrandInElement(els[i]);
   }
 
   function syncSelectors(lang) {
@@ -134,6 +195,7 @@
   }
 
   function init() {
+    injectBrandCSS();
     captureBaseline();
     wireSelectors();
     setLang(detectLang());
